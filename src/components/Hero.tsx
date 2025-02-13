@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export function Hero() {
     return (
       <div className="relative bg-gradient-to-b from-blue-50 to-white overflow-hidden">
@@ -61,11 +63,15 @@ export function Hero() {
                 {/* Image container with enhanced styling */}
                 <div className="relative">
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-blue-600/20 to-blue-800/20 transform rotate-6" />
-                  <img 
-                    src="/image.png" 
-                    alt="Floris adviseur"
-                    className="relative rounded-2xl shadow-2xl transform hover:scale-[1.02] transition-transform duration-300"
-                  />
+                  <div className="relative rounded-4xl shadow-4xl transform hover:scale-[1.02] transition-transform duration-300 overflow-hidden">
+                    <Image 
+                      src="/image.png" 
+                      alt="Floris adviseur"
+                      width={500}
+                      height={500}
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
