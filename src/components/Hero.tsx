@@ -106,7 +106,7 @@ export function Hero() {
         {/* Benefits Section */}
         <div className="px-4 sm:px-6 lg:px-8 pb-20">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit, index) => (
+            {benefits.map((benefit) => (
               <div
                 key={benefit.title}
                 className="relative group bg-white rounded-xl p-6 shadow-sm border border-gray-100
