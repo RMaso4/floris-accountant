@@ -1,35 +1,39 @@
-import { Calculator, FileText, PiggyBank, Briefcase } from 'lucide-react'
+import { Calculator, FileText, PiggyBank, Briefcase, ArrowRight } from 'lucide-react';
 
 const services = [
   {
     name: 'Accountancy',
     description: 'Samenstellen van jaarrekeningen, beoordelen van jaarrekeningen, deponeerstukken KvK',
     icon: Calculator,
-    gradient: 'from-blue-400 to-blue-600',
+    href: '/diensten#accountancy',
+    features: ['Jaarrekeningen', 'Deponeringen KvK', 'Verklaring verzekerd belang']
   },
   {
     name: 'Belastingzaken',
     description: 'Aangiften vennootschapsbelasting, inkomstenbelasting, dividendbelasting',
     icon: PiggyBank,
-    gradient: 'from-blue-500 to-blue-700',
+    href: '/diensten#belastingzaken',
+    features: ['Vennootschapsbelasting', 'Inkomstenbelasting', 'Dividendbelasting']
   },
   {
     name: 'Administratieve dienstverlening',
     description: 'Voeren van administraties, verzorgen loon- en salarisadministratie, online boekhouden',
     icon: FileText,
-    gradient: 'from-blue-600 to-blue-800',
+    href: '/diensten#administratie',
+    features: ['Financiële administratie', 'Salarisadministratie', 'Online boekhouden']
   },
   {
     name: 'Advisering',
     description: 'Ondernemingsplan, financieringen, begrotingen, bedrijfsopvolging',
     icon: Briefcase,
-    gradient: 'from-blue-700 to-blue-900',
+    href: '/diensten#advisering',
+    features: ['Bedrijfsadvies', 'Financieringsaanvragen', 'Bedrijfsopvolging']
   },
-]
+];
 
 export function Services() {
   return (
-    <div className="relative py-20 bg-gradient-to-b from-white to-gray-50">
+    <div className="relative py-24 bg-gradient-to-b from-white to-gray-50">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -39,60 +43,82 @@ export function Services() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-base font-semibold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-            Diensten
+            Onze Dienstverlening
           </h2>
           <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Wat doet Floris?
+            Wat kunnen wij voor u betekenen?
           </p>
-          <div className="mt-4 max-w-2xl mx-auto">
-            <p className="text-lg text-gray-600">
-              Professionele dienstverlening op maat voor uw onderneming, met persoonlijke aandacht en expertise.
-            </p>
-          </div>
+          <p className="mt-4 text-lg text-gray-600">
+            Complete financiële dienstverlening voor ondernemers. Van dagelijkse administratie tot strategisch advies.
+          </p>
         </div>
 
-        <div className="mt-16">
-          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
-            {services.map((service) => (
-              <div 
-                key={service.name} 
-                className="group relative pt-6"
-              >
-                <div className="relative rounded-2xl transition-all duration-300 transform group-hover:scale-[1.02]">
-                  {/* Card Background with Gradient Border */}
-                  <div className="absolute -inset-px bg-gradient-to-r from-blue-100 to-blue-200 rounded-2xl" />
-                  
-                  <div className="relative h-full bg-white rounded-2xl p-8">
-                    <div className="flex flex-col items-start">
-                      {/* Icon with gradient background */}
-                      <div className={`
-                        inline-flex items-center justify-center p-3 rounded-xl
-                        bg-gradient-to-r ${service.gradient} shadow-lg
-                        transform -translate-y-11
-                      `}>
-                        <service.icon className="h-6 w-6 text-white" aria-hidden="true" />
-                      </div>
-
-                      <h3 className="mt-2 text-xl font-bold text-gray-900">
-                        {service.name}
-                      </h3>
-
-                      <p className="mt-4 text-base text-gray-600 leading-relaxed">
-                        {service.description}
-                      </p>
-
-                      {/* Hover effect line */}
-                      <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-blue-600 to-blue-800 transition-all duration-300 group-hover:w-full" />
-                    </div>
-                  </div>
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {services.map((service, index) => (
+            <div
+              key={service.name}
+              className="group relative bg-white rounded-2xl p-8 shadow-sm border border-gray-100 
+                transition-all duration-300 hover:shadow-lg"
+            >
+              {/* Service Icon */}
+              <div className="absolute top-0 right-8 transform -translate-y-1/2">
+                <div className="inline-flex items-center justify-center p-3 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl shadow-lg">
+                  <service.icon className="h-6 w-6 text-white" />
                 </div>
               </div>
-            ))}
-          </div>
+
+              {/* Content */}
+              <div className="mt-4">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  {service.name}
+                </h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  {service.description}
+                </p>
+
+                {/* Features List */}
+                <ul className="space-y-3 mb-8">
+                  {service.features.map((feature) => (
+                    <li key={feature} className="flex items-center text-gray-600">
+                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mr-3" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Learn More Link */}
+                <a
+                  href={service.href}
+                  className="inline-flex items-center text-blue-600 font-medium group-hover:text-blue-700"
+                >
+                  Meer informatie
+                  <ArrowRight className="ml-2 h-4 w-4 transform transition-transform duration-200 group-hover:translate-x-1" />
+                </a>
+              </div>
+
+              {/* Bottom Gradient Line */}
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-700 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+            </div>
+          ))}
+        </div>
+
+        {/* CTA Section */}
+        <div className="mt-16 text-center">
+          <a
+            href="/diensten"
+            className="inline-flex items-center justify-center px-8 py-3.5 text-base font-medium rounded-lg 
+              text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 
+              transform transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 
+              focus:ring-offset-2 focus:ring-blue-500 shadow-md hover:shadow-lg"
+          >
+            Bekijk al onze diensten
+          </a>
         </div>
       </div>
     </div>
-  )
+  );
 }
